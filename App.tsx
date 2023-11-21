@@ -2,7 +2,7 @@ import React from 'react';
 import { Button, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
 import FaceAuthenticatorHook from './src/caf-bridge-sdk/FaceAuthenticatorHook';
-import { FaceAuthenticatorCAFStage, FaceAuthenticatorFilter, IFaceAuthenticatorConfig } from './src/caf-bridge-sdk/FaceAuthenticatorHook/types';
+import { FaceAuthenticatorCAFStage, FaceAuthenticatorFilter, IFaceAuthenticatorConfig } from './src/caf-bridge-sdk/FaceAuthenticatorHook/types.d';
 
 const App: React.FC<any> = () => {
 
