@@ -43,7 +43,7 @@ class CafFaceAuthenticator: RCTEventEmitter, FaceAuthSDKDelegate {
     var configDictionary: [String: Any]? = nil
     var filter = Filter.lineDrawing;
     var cafStage = FaceLiveness.CAFStage.PROD
-    var setLoadingScreen: Bool = false;
+    var setLoadingScreen: Bool? = nil;
     
     if let data = config.data(using: .utf8) {
       configDictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
@@ -64,7 +64,7 @@ class CafFaceAuthenticator: RCTEventEmitter, FaceAuthSDKDelegate {
     let faceAuthenticator = FaceAuthSDK.Builder()
       .setStage(stage: cafStage)
       .setFilter(filter: filter)
-      .setLoading(withLoading: setLoadingScreen)
+      .setLoading(withLoading: setLoadingScreen!)
       .setCredentials(token: token, personId: personId)
         .build()
     faceAuthenticator.delegate = self

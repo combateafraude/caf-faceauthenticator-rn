@@ -20,7 +20,7 @@ const App: React.FC<any> = () => {
     cafStage: FaceAuthenticatorCAFStage.DEV,
     filter: FaceAuthenticatorFilter.NATURAL,
     setEnableScreenshots: false,
-    setLoadingScreen: false
+    setLoadingScreen: true
   }
 
   // FaceAuthenticator
