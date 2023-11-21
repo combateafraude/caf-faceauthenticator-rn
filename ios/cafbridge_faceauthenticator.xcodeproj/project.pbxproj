@@ -12,6 +12,8 @@
 		13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB01A68108700A75B9A /* AppDelegate.mm */; };
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
+		5C2F8F382B0D040B00CF075F /* CafFaceAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F8F372B0D040B00CF075F /* CafFaceAuthenticator.swift */; };
+		5C2F8F3A2B0D042000CF075F /* CafFaceAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F8F392B0D042000CF075F /* CafFaceAuthenticator.m */; };
 		7699B88040F8A987B510C191 /* libPods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -40,6 +42,9 @@
 		3B4392A12AC88292D35C810B /* Pods-cafbridge_faceauthenticator.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cafbridge_faceauthenticator.debug.xcconfig"; path = "Target Support Files/Pods-cafbridge_faceauthenticator/Pods-cafbridge_faceauthenticator.debug.xcconfig"; sourceTree = "<group>"; };
 		5709B34CF0A7D63546082F79 /* Pods-cafbridge_faceauthenticator.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cafbridge_faceauthenticator.release.xcconfig"; path = "Target Support Files/Pods-cafbridge_faceauthenticator/Pods-cafbridge_faceauthenticator.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.debug.xcconfig"; path = "Target Support Files/Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests/Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.debug.xcconfig"; sourceTree = "<group>"; };
+		5C2F8F362B0D040B00CF075F /* cafbridge_faceauthenticator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cafbridge_faceauthenticator-Bridging-Header.h"; sourceTree = "<group>"; };
+		5C2F8F372B0D040B00CF075F /* CafFaceAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafFaceAuthenticator.swift; sourceTree = "<group>"; };
+		5C2F8F392B0D042000CF075F /* CafFaceAuthenticator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CafFaceAuthenticator.m; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-cafbridge_faceauthenticator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cafbridge_faceauthenticator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = cafbridge_faceauthenticator/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.release.xcconfig"; path = "Target Support Files/Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests/Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -90,8 +95,11 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
+				5C2F8F392B0D042000CF075F /* CafFaceAuthenticator.m */,
+				5C2F8F372B0D040B00CF075F /* CafFaceAuthenticator.swift */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				5C2F8F362B0D040B00CF075F /* cafbridge_faceauthenticator-Bridging-Header.h */,
 			);
 			name = cafbridge_faceauthenticator;
 			sourceTree = "<group>";
@@ -207,7 +215,7 @@
 						TestTargetID = 13B07F861A680F5B00A75B9A;
 					};
 					13B07F861A680F5B00A75B9A = {
-						LastSwiftMigration = 1120;
+						LastSwiftMigration = 1430;
 					};
 				};
 			};
@@ -413,6 +421,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				5C2F8F3A2B0D042000CF075F /* CafFaceAuthenticator.m in Sources */,
+				5C2F8F382B0D040B00CF075F /* CafFaceAuthenticator.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -432,6 +442,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 5B7EB9410499542E8C5724F5 /* Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -459,6 +470,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 89C6BE57DB24E9ADA2F236DE /* Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				COPY_PHASE_STRIP = NO;
 				INFOPLIST_FILE = cafbridge_faceauthenticatorTests/Info.plist;
@@ -486,6 +498,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65YBL9WTWN;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = cafbridge_faceauthenticator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -500,6 +513,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = cafbridge_faceauthenticator;
+				SWIFT_OBJC_BRIDGING_HEADER = "cafbridge_faceauthenticator-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -513,6 +527,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 65YBL9WTWN;
 				INFOPLIST_FILE = cafbridge_faceauthenticator/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -526,6 +541,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "org.reactjs.native.example.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = cafbridge_faceauthenticator;
+				SWIFT_OBJC_BRIDGING_HEADER = "cafbridge_faceauthenticator-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				VERSIONING_SYSTEM = "apple-generic";
 			};
@@ -600,10 +616,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 			};
@@ -673,10 +686,7 @@
 					"-DFOLLY_MOBILE=1",
 					"-DFOLLY_USE_LIBCPP=1",
 				);
-				OTHER_LDFLAGS = (
-					"$(inherited)",
-					" ",
-				);
+				OTHER_LDFLAGS = "$(inherited)  ";
 				REACT_NATIVE_PATH = "${PODS_ROOT}/../../node_modules/react-native";
 				SDKROOT = iphoneos;
 				VALIDATE_PRODUCT = YES;

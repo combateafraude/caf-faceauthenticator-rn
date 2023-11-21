@@ -1,6 +1,8 @@
 import React from 'react';
 import { Button, SafeAreaView, ScrollView, StatusBar, StyleSheet, Text, View } from 'react-native';
 import { Colors } from 'react-native/Libraries/NewAppScreen';
+import FaceAuthenticatorHook from './src/caf-bridge-sdk/FaceAuthenticatorHook';
+import { FaceAuthenticatorCAFStage, FaceAuthenticatorFilter, IFaceAuthenticatorConfig } from './src/caf-bridge-sdk/FaceAuthenticatorHook/types';
 
 const App: React.FC<any> = () => {
 
@@ -15,8 +17,8 @@ const App: React.FC<any> = () => {
   const CPF = "64312743509"
 
   const FaceAuthenticatorConfig: IFaceAuthenticatorConfig = {
-    cafStage: FaceLivenessCAFStage.DEV,
-    filter: FaceLivenessFilter.NATURAL,
+    cafStage: FaceAuthenticatorCAFStage.DEV,
+    filter: FaceAuthenticatorFilter.NATURAL,
     setEnableScreenshots: false,
     setLoadingScreen: false
   }
