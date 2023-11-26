@@ -20,6 +20,8 @@ public class CafFaceAuthenticatorActivity extends ReactActivity {
     private String personId;
     private String customConfig;
     private Intent intent;
+    private FaceAuthenticatorConfig config;
+    private FaceAuthenticator faceAuthenticator;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,24 +31,36 @@ public class CafFaceAuthenticatorActivity extends ReactActivity {
         token = intent.getStringExtra("token");
         personId = intent.getStringExtra("personId");
         customConfig = intent.getStringExtra("config");
-
         try {
+            config = new FaceAuthenticatorConfig(customConfig);
             this.faceAuthenticator();
         } catch (JSONException e) {
             throw new RuntimeException(e);
         }
-
     }
 
-    private void faceAuthenticator() throws JSONException {
-        FaceAuthenticatorConfig config = new FaceAuthenticatorConfig(customConfig);
-        FaceAuthenticator faceAuthenticator = new FaceAuthenticator.Builder(token)
-                .setStage(config.cafStage)
-                .setFilter(config.filter)
-                .setLoadingScreen(config.setLoadingScreen)
-                .setEnableScreenshots(config.setEnableScreenshots)
-                .build();
+    private void faceAuthenticator() {
+        if (InternetConnectionChecker.isInternetConnected(getApplicationContext())) {
+            WritableMap writableMap = new WritableNativeMap();
+            writableMap.putString("type", "Error");
+            writableMap.putString("message", "Error: Dispositivo não esta conectado a internet");
 
+            getReactInstanceManager().getCurrentReactContext()
+                    .getJSModule(DeviceEventManagerModule.RCTDeviceEventEmitter.class)
+                    .emit("FaceLiveness_Error", writableMap);
+            finish();
+        } else {
+            faceAuthenticator = new FaceAuthenticator.Builder(token)
+                    .setStage(config.cafStage)
+                    .setFilter(config.filter)
+                    .setLoadingScreen(config.setLoadingScreen)
+                    .setEnableScreenshots(config.setEnableScreenshots)
+                    .build();
+
+            authenticate();
+        }
+    }
+    private void authenticate() {
         faceAuthenticator.authenticate(this, personId, new VerifyAuthenticationListener() {
             @Override
             public void onSuccess(FaceAuthenticatorResult result) {

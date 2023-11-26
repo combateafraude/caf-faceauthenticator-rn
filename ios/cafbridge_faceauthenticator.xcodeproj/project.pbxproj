@@ -14,6 +14,7 @@
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		5C2F8F382B0D040B00CF075F /* CafFaceAuthenticator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F8F372B0D040B00CF075F /* CafFaceAuthenticator.swift */; };
 		5C2F8F3A2B0D042000CF075F /* CafFaceAuthenticator.m in Sources */ = {isa = PBXBuildFile; fileRef = 5C2F8F392B0D042000CF075F /* CafFaceAuthenticator.m */; };
+		5CC9D3B42B137CFA00FC88E3 /* CheckInternetConnection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CC9D3B32B137CFA00FC88E3 /* CheckInternetConnection.swift */; };
 		7699B88040F8A987B510C191 /* libPods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.a */; };
 		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
@@ -45,6 +46,7 @@
 		5C2F8F362B0D040B00CF075F /* cafbridge_faceauthenticator-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "cafbridge_faceauthenticator-Bridging-Header.h"; sourceTree = "<group>"; };
 		5C2F8F372B0D040B00CF075F /* CafFaceAuthenticator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CafFaceAuthenticator.swift; sourceTree = "<group>"; };
 		5C2F8F392B0D042000CF075F /* CafFaceAuthenticator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CafFaceAuthenticator.m; sourceTree = "<group>"; };
+		5CC9D3B32B137CFA00FC88E3 /* CheckInternetConnection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckInternetConnection.swift; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-cafbridge_faceauthenticator.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-cafbridge_faceauthenticator.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = cafbridge_faceauthenticator/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.release.xcconfig"; path = "Target Support Files/Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests/Pods-cafbridge_faceauthenticator-cafbridge_faceauthenticatorTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -99,6 +101,7 @@
 				5C2F8F372B0D040B00CF075F /* CafFaceAuthenticator.swift */,
 				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
+				5CC9D3B32B137CFA00FC88E3 /* CheckInternetConnection.swift */,
 				5C2F8F362B0D040B00CF075F /* cafbridge_faceauthenticator-Bridging-Header.h */,
 			);
 			name = cafbridge_faceauthenticator;
@@ -421,6 +424,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				13B07FBC1A68108700A75B9A /* AppDelegate.mm in Sources */,
+				5CC9D3B42B137CFA00FC88E3 /* CheckInternetConnection.swift in Sources */,
 				5C2F8F3A2B0D042000CF075F /* CafFaceAuthenticator.m in Sources */,
 				5C2F8F382B0D040B00CF075F /* CafFaceAuthenticator.swift in Sources */,
 				13B07FC11A68108700A75B9A /* main.m in Sources */,

@@ -14,6 +14,9 @@ import FaceLiveness
 class CafFaceAuthenticator: RCTEventEmitter, FaceAuthSDKDelegate {
   
   static let shared = CafFaceAuthenticator()
+  var filter = Filter.lineDrawing;
+  var cafStage = FaceLiveness.CAFStage.PROD
+  var setLoadingScreen: Bool? = nil;
   
   @objc
   override static func requiresMainQueueSetup() -> Bool {
@@ -41,53 +44,60 @@ class CafFaceAuthenticator: RCTEventEmitter, FaceAuthSDKDelegate {
   @objc(faceAuthenticator:personId:config:)
   func faceAuthenticator(token: String, personId: String, config: String) {
     var configDictionary: [String: Any]? = nil
-    var filter = Filter.lineDrawing;
-    var cafStage = FaceLiveness.CAFStage.PROD
-    var setLoadingScreen: Bool? = nil;
     
     if let data = config.data(using: .utf8) {
       configDictionary = try? JSONSerialization.jsonObject(with: data, options: []) as? [String: Any]
     }
-    
-    if let filterValue = configDictionary?["filter"] as? Int, let newFilter = Filter(rawValue: filterValue) {
-      filter = newFilter
+    if CheckInternetConnection.shared.monitor.currentPath.status == .satisfied {
+      if let filterValue = configDictionary?["filter"] as? Int, let newFilter = Filter(rawValue: filterValue) {
+        filter = newFilter
+      }
+      
+      if let loadingScreen = configDictionary?["setLoadingScreen"] as? Bool {
+        setLoadingScreen = loadingScreen
+      }
+      
+      if let cafStageValue = configDictionary?["cafStage"] as? Int, let newCafStage = FaceLiveness.CAFStage(rawValue: cafStageValue) {
+        cafStage = newCafStage
+      }
+      autheticate(token: token, personId: personId) }
+    else {
+      let response : NSMutableDictionary = [:]
+      response["type"] = "Error"
+      response["message"] = "Error: Dispositivo não esta conectado a internet"
+      sendEvent(withName: "FaceLiveness_Error", body: response)
     }
-    
-    if let loadingScreen = configDictionary?["setLoadingScreen"] as? Bool {
-      setLoadingScreen = loadingScreen
-    }
-    
-    if let cafStageValue = configDictionary?["cafStage"] as? Int, let newCafStage = FaceLiveness.CAFStage(rawValue: cafStageValue) {
-      cafStage = newCafStage
-    }
-    
+  }
+  
+  
+  func autheticate(token: String, personId: String) {
     let faceAuthenticator = FaceAuthSDK.Builder()
       .setStage(stage: cafStage)
       .setFilter(filter: filter)
       .setLoading(withLoading: setLoadingScreen!)
       .setCredentials(token: token, personId: personId)
-        .build()
+      .build()
     faceAuthenticator.delegate = self
-        
-        DispatchQueue.main.async {
-          guard let currentViewController = UIApplication.shared.keyWindow!.rootViewController else { return }
-          faceAuthenticator.startFaceAuthSDK(viewController: currentViewController)
-        }
+    
+    DispatchQueue.main.async {
+      guard let currentViewController = UIApplication.shared.keyWindow!.rootViewController else { return }
+      faceAuthenticator.startFaceAuthSDK(viewController: currentViewController)
     }
-
-
+  }
+  
+  
   // FaceAuthenticator
   func didFinishSuccess(with faceAuthenticatorResult: FaceAuthenticator.FaceAuthenticatorResult) {
     let response : NSMutableDictionary = [:]
-        response["data"] = faceAuthenticatorResult.signedResponse
-        sendEvent(withName: "FaceAuthenticator_Success", body: response)
+    response["data"] = faceAuthenticatorResult.signedResponse
+    sendEvent(withName: "FaceAuthenticator_Success", body: response)
   }
   
   func didFinishWithError(with faceAuthenticatorErrorResult: FaceAuthenticator.FaceAuthenticatorErrorResult) {
-      let response : NSMutableDictionary = [:]
-          response["message"] = faceAuthenticatorErrorResult.description
-          response["type"] = String(describing: faceAuthenticatorErrorResult.errorType)
-          sendEvent(withName: "FaceAuthenticator_Error", body: response)
+    let response : NSMutableDictionary = [:]
+    response["message"] = faceAuthenticatorErrorResult.description
+    response["type"] = String(describing: faceAuthenticatorErrorResult.errorType)
+    sendEvent(withName: "FaceAuthenticator_Error", body: response)
   }
   
   func didFinishWithCancell(with faceAuthenticatorResult: FaceAuthenticator.FaceAuthenticatorResult) {
@@ -96,9 +106,9 @@ class CafFaceAuthenticator: RCTEventEmitter, FaceAuthSDKDelegate {
   
   func didFinishWithFail(with faceAuthenticatorFailResult: FaceAuthenticator.FaceAuthenticatorFailResult) {
     let response : NSMutableDictionary = [:]
-        response["message"] = faceAuthenticatorFailResult.description
-        response["type"] = String(describing: faceAuthenticatorFailResult.errorType)
-        sendEvent(withName: "FaceAuthenticator_Error", body: response)
+    response["message"] = faceAuthenticatorFailResult.description
+    response["type"] = String(describing: faceAuthenticatorFailResult.errorType)
+    sendEvent(withName: "FaceAuthenticator_Error", body: response)
   }
   
   func openLoadingScreenStartSDK() {
